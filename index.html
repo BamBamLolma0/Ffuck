@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Centered Video</title>
+  <style>
+    /* Full-page flex container centers its content both axes */
+    :root { --max-width: 1000px; --gap: 1rem; }
+    html,body { height: 100%; margin: 0; }
+    .center-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;       /* vertical center */
+      justify-content: center;   /* horizontal center */
+      padding: 1rem;
+      box-sizing: border-box;
+      background: #111;          /* optional background */
+      color: #fff;
+    }
+
+    /* Make the video responsive while maintaining aspect ratio */
+    .video-wrapper {
+      width: 100%;
+      max-width: var(--max-width);
+      aspect-ratio: 16/9;        /* modern browsers keep 16:9 aspect */
+      display: grid;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      background: black;
+      object-fit: contain;       /* keep full video visible */
+      outline: none;
+    }
+
+    /* optional caption style */
+    figcaption {
+      text-align: center;
+      margin-top: .5rem;
+      font-size: .95rem;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <main class="center-page">
+    <figure class="video-wrapper">
+      <!-- Replace "video.mp4" with your file path; include multiple sources for compatibility -->
+      <video controls preload="metadata" poster="poster.jpg" aria-label="Demo video">
+        <source src="video.mp4" type="video/mp4">
+        <!-- Fallback text -->
+        Your browser does not support the HTML5 Video element.
+      </video>
+      <figcaption>Centered video — press play</figcaption>
+    </figure>
+  </main>
+</body>
+</html>
